@@ -81,19 +81,19 @@ impl Universe {
     }
 
     pub fn new() -> Universe {
-        let width = 100;
-        let height = 100;
+        let width: u32 = 100;
+        let height: u32 = 100;  
 
         let cells = (0..width * height)
-            .map(|i| {
-                if i % 2 == 0 || i % 7 == 0 {
-                    Cell::Alive
-                } else {
-                    Cell::Dead
-                }
-            })
-            .collect();
-
+        .map(|_| {
+            if rand::random() {
+                Cell::Alive
+            } else {
+                Cell::Dead
+            }
+        })
+        .collect();
+        
         Universe {
             width,
             height,
